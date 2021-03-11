@@ -1,8 +1,8 @@
-package com.api.proposta.solicitante.analise;
+package com.api.proposta.cartoes;
 
 import com.api.proposta.solicitante.Proposta;
 
-public class AnalisePropostaRequest {
+public class AnaliseCartaoRequest {
 
     private String documento;
 
@@ -10,10 +10,13 @@ public class AnalisePropostaRequest {
 
     private Long idProposta;
 
-    public AnalisePropostaRequest(String documento, String nome, Long idProposta) {
+    public AnaliseCartaoRequest(String documento, String nome, Long idProposta) {
         this.documento = documento;
         this.nome = nome;
         this.idProposta = idProposta;
+    }
+    @Deprecated
+    public AnaliseCartaoRequest() {
     }
 
     public String getDocumento() {
@@ -27,4 +30,5 @@ public class AnalisePropostaRequest {
     public Long getIdProposta() {
         return idProposta;
     }
+
 }

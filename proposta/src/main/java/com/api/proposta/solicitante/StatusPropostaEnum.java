@@ -6,10 +6,4 @@ public enum StatusPropostaEnum {
 
     ELEGIVEL, NAO_ELEGIVEL;
 
-    public static StatusPropostaEnum analisaProposta(AnalisePropostasEnum analise){
-        if(analise == AnalisePropostasEnum.SEM_RESTRICAO){
-            return ELEGIVEL;
-        }
-        return NAO_ELEGIVEL;
-    }
 }

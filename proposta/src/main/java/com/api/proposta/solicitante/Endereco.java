@@ -23,4 +23,7 @@ public class Endereco {
         this.cep = cep;
     }
 
+    public EnderecoRequest criaEndereco() {
+        return new EnderecoRequest(logradouro, numero, cep);
+    }
 }

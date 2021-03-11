@@ -13,6 +13,7 @@ public class ValorUnicoValidador implements ConstraintValidator<ValorUnico, Obje
 
     private String domainAttribute;
     private Class<?> klass;
+
     @PersistenceContext
     private EntityManager manager;
 

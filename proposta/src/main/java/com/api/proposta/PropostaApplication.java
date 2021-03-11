@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableJpaRepositories(enableDefaultTransactions = false)
 @EnableFeignClients
+@EnableScheduling
 public class PropostaApplication {
 
     public static void main(String[] args) {

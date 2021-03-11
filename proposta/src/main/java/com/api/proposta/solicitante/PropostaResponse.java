@@ -1,42 +1,29 @@
 package com.api.proposta.solicitante;
 
-import com.api.proposta.validadores.CNPJouCPF;
-import com.api.proposta.validadores.ValorUnico;
+import com.api.proposta.cartoes.Cartao;
+import com.api.proposta.cartoes.CartaoRequest;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
-public class PropostaRequest {
+public class PropostaResponse {
 
-    @CNPJouCPF
-    @NotBlank
-    @ValorUnico(domainClass = Proposta.class, fieldName = "documento")
     private String documento;
-
-    @Email
-    @NotBlank
     private String email;
-
-    @NotBlank
     private String nome;
-
     private EnderecoRequest endereco;
-
-    @NotNull
     private BigDecimal salario;
+    private StatusPropostaEnum status;
+    private CartaoRequest cartao;
 
-    public PropostaRequest(@NotBlank String documento, @Email @NotBlank String email, @NotBlank String nome, EnderecoRequest endereco, @NotNull BigDecimal salario) {
+    public PropostaResponse(Proposta proposta) {
         this.documento = documento;
         this.email = email;
         this.nome = nome;
         this.endereco = endereco;
         this.salario = salario;
-    }
-
-    public Proposta toModel(){
-        return new Proposta(documento, email, nome, endereco.criaEndereco(), salario);
+        this.status = status;
+        this.cartao = cartao;
     }
 
     public String getDocumento() {
@@ -57,5 +44,13 @@ public class PropostaRequest {
 
     public BigDecimal getSalario() {
         return salario;
+    }
+
+    public StatusPropostaEnum getStatus() {
+        return status;
+    }
+
+    public CartaoRequest getCartao() {
+        return cartao;
     }
 }
