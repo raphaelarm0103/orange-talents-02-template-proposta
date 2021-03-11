@@ -1,9 +1,5 @@
 package com.api.proposta.solicitante;
 
-import com.api.proposta.cartoes.Cartao;
-import com.api.proposta.cartoes.CartaoRequest;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
 
 public class PropostaResponse {
@@ -11,19 +7,22 @@ public class PropostaResponse {
     private String documento;
     private String email;
     private String nome;
-    private EnderecoRequest endereco;
+    private Endereco endereco;
     private BigDecimal salario;
     private StatusPropostaEnum status;
-    private CartaoRequest cartao;
+
 
     public PropostaResponse(Proposta proposta) {
-        this.documento = documento;
-        this.email = email;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.salario = salario;
-        this.status = status;
-        this.cartao = cartao;
+        this.documento = proposta.getDocumento();
+        this.email = proposta.getEmail();
+        this.nome = proposta.getNome();
+        this.endereco = proposta.getEndereco();
+        this.salario = proposta.getSalario();
+        this.status = proposta.getStatus();
+
+    }
+    @Deprecated
+    public PropostaResponse() {
     }
 
     public String getDocumento() {
@@ -38,7 +37,7 @@ public class PropostaResponse {
         return nome;
     }
 
-    public EnderecoRequest getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
@@ -50,7 +49,4 @@ public class PropostaResponse {
         return status;
     }
 
-    public CartaoRequest getCartao() {
-        return cartao;
-    }
 }

@@ -12,9 +12,11 @@ import feign.FeignException;
 import javassist.NotFoundException;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.persistence.EntityManager;
@@ -79,13 +81,15 @@ public class PropostaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PropostaResponse> getById(@PathVariable Long id) throws NotFoundException {
+    public ResponseEntity<PropostaResponse> getById(@PathVariable Long id) throws Exception{
         Proposta proposta = Optional.ofNullable(manager.find(Proposta.class, id))
-                .orElseThrow(() -> new NotFoundException("Proposta não foi encontrada por esse ID"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Proposta não foi encontrada por esse ID"));
 
         return ResponseEntity.ok(new PropostaResponse(proposta));
     }
 }
+
+
 
 /*
 //

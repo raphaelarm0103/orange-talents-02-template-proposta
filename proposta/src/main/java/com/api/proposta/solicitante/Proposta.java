@@ -75,6 +75,22 @@ public class Proposta {
         return nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
+    public Cartao getCartao() {
+        return cartao;
+    }
+
     public void setPropostaStatus(AnalisePropostasEnum status) {
         if(status == AnalisePropostasEnum.COM_RESTRICAO)
             this.status = StatusPropostaEnum.NAO_ELEGIVEL;
@@ -109,5 +125,7 @@ public class Proposta {
     public int hashCode() {
         return Objects.hash(id, documento, email, nome, endereco, salario, status, cartao);
     }
+
+
 }
 
