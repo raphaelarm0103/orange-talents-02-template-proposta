@@ -1,0 +1,16 @@
+FROM openjdk:15
+MAINTAINER "Raphael Marques"
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENV DB_URL=jdbc:postgresql://localhost:5432/banco_proposta
+ENV DB_DRIVER=org.postgresql.Driver
+ENV DB_USERNAME=keycloak
+ENV DB_PASSWORD=password
+ENV DB_PLATFORM=postgres
+ENV JPA_DATABASE=POSTGRESQL
+ENV JPA_SHOW_SQL=false
+ENV JPA_DDL_AUTO=update
+ENV URL_ANALISE=http://analise:9999/api
+ENV URL_CARTAO=http://contas:8888/api
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app.jar"]
