@@ -6,7 +6,7 @@ import com.api.proposta.cartoes.AnaliseCartaoResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(name = "analise", url = "http://localhost:9999")
+@FeignClient(name = "analise", url = "${analise.url}")
 public interface ConectaAnalise {
 
     @PostMapping("/api/solicitacao")
