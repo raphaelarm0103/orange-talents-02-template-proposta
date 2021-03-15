@@ -91,24 +91,4 @@ public class PropostaController {
 
 
 
-/*
-//
 
-
-            while(!elegivel.isEmpty()) {
-            Long id = elegivel.get(0);
-
-            try {
-                Proposta proposta = manager.find(Proposta.class, id);
-                AnaliseCartaoResponse cartaoResponse = conectaCartao.criarCartao(proposta.cartaoRequest());
-
-                proposta.cartaoResponse(cartaoResponse.toModel((Proposta) manager));
-                elegivel.remove(0);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-}
-*/

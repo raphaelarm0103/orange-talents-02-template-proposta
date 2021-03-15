@@ -6,5 +6,8 @@ ENV DB_URL=jdbc:postgresql://postgres:5432/banco_proposta
 ENV JPA_DDL_AUTO=update
 ENV URL_ANALISE=http://analise:9999/api
 ENV URL_CARTAO=http://contas:8888/api
+ENV KEYCLOAK_ISSUER_URI=http://localhost:18080/auth/realms/nosso-cartao
+ENV KEYCLOAK_JWKS_URI=http://localhost:18080/auth/realms/nosso-cartao/protocol/openid-connect/certs
 EXPOSE 8081
+
 ENTRYPOINT ["java", "-jar", "/app.jar"]
