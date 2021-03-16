@@ -1,10 +1,13 @@
 package com.api.proposta.cartoes;
 
+import com.api.proposta.avisos.AvisoViagem;
+import com.api.proposta.bloqueio.BloqueioResponse;
+import com.api.proposta.carteiras.Carteira;
+import com.api.proposta.carteiras.CarteiraPagamentoResponse;
 import com.api.proposta.solicitante.Proposta;
-import org.springframework.cglib.core.Local;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class AnaliseCartaoResponse {
 
@@ -17,6 +20,12 @@ public class AnaliseCartaoResponse {
     private LocalDateTime emitidoEm;
 
     private Double limite;
+
+    private List<BloqueioResponse> bloqueios;
+
+    private List<AvisoViagem> avisos;
+
+    private List<CarteiraPagamentoResponse> carteiras;
 
     public String getId() {
         return this.id;
@@ -51,5 +60,12 @@ public class AnaliseCartaoResponse {
                 ", emitidoEm=" + emitidoEm +
                 ", limite=" + limite +
                 '}';
+    }
+
+    public BloqueioResponse getBloqueio() {
+        return bloqueios.get(bloqueios.size() -1);
+    }
+
+    public CarteiraPagamentoResponse getCarteira() { return carteiras.get(carteiras.size() -1);
     }
 }
