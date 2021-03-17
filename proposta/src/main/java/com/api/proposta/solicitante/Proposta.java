@@ -7,6 +7,7 @@ import com.api.proposta.solicitante.analise.AnalisePropostaRequest;
 import com.api.proposta.solicitante.analise.AnalisePropostasEnum;
 import com.api.proposta.validadores.CNPJouCPF;
 import com.api.proposta.validadores.ValorUnico;
+import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.util.Assert;
 
 
@@ -44,7 +45,7 @@ public class Proposta {
     private Cartao cartao;
 
     public Proposta(String documento, String email, String nome,  Endereco endereco, BigDecimal salario) {
-        this.documento = documento;
+        this.documento = Encryptors.text("abcabc", "cbacba").encrypt(documento);
         this.email = email;
         this.nome = nome;
         this.endereco = endereco;
